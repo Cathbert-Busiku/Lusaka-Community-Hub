@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lusaka Community Hub Ministry</title>
+<meta name="description" content="Lusaka Community Hub Ministry – BBTTH (Building Bridges To The Harvest). Seven Community Hubs offering care, mentorship, empowerment, service and connection in Lusaka, Zambia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a calm white canvas in the LCH green, navy and gold. Each hub page takes on its own flyer colour,
+   so a visitor always knows which hub they are in. Photos sit in soft rounded frames with a gold wave accent. */
+:root{
+  --ink:#0f1f3d;          /* navy text, from the flyers */
+  --green:#14572e;        /* LCH green */
+  --gold:#f2b705;         /* LCH gold */
+  --paper:#f5f7f4;        /* cool off-white section fill */
+  --line:#dde4de;
+  --muted:#4f5d73;
+  --white:#ffffff;
+  --accent:var(--green);  /* overridden per hub */
+  --accent-tint:#e7f1e9;
+  --accent-ink:#ffffff;
+  --display:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --radius:18px;
+  --shadow:0 1px 2px rgba(15,31,61,.06),0 8px 24px rgba(15,31,61,.08);
+  --wrap:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}
+h2{font-size:clamp(1.55rem,3.2vw,2.25rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:100;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:700 1rem/1 var(--display);padding:.95em 1.35em;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 30%,transparent)}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 88%,#000)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:#ffc928}
+.btn-ghost{background:transparent;border-color:color-mix(in srgb,var(--accent) 40%,transparent);color:var(--accent)}
+.btn-ghost:hover{background:var(--accent-tint)}
+.btn-wa{background:#1fa855;color:#fff}
+.btn-wa:hover{background:#178c46}
+.btn-sm{font-size:.9rem;padding:.7em 1.05em}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.link-arrow{display:inline-flex;align-items:center;gap:.4em;font:700 .95rem var(--display);color:var(--accent);text-decoration:none}
+.link-arrow svg{width:1em;height:1em;transition:transform .15s}
+.link-arrow:hover svg{transform:translateX(3px)}
+
+/* ---------- Header ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand img{height:40px;width:auto}
+.brand-text{display:flex;flex-direction:column;line-height:1.1;border-left:2px solid var(--gold);padding-left:12px}
+.brand-text b{font:800 .82rem var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
+.brand-text span{font:600 .7rem var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto;list-style:none;padding:0;margin-top:0;margin-bottom:0}
+.nav-links>li{position:relative}
+.nav-links a,.nav-links button.navbtn{font:600 .95rem var(--display);color:var(--ink);text-decoration:none;padding:10px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer}
+.nav-links a:hover,.nav-links button.navbtn:hover{background:var(--paper)}
+.nav-links a[aria-current="page"],.navbtn.is-active{color:var(--green);background:#e9f2eb}
+.navbtn svg{width:14px;height:14px;transition:transform .2s}
+.navbtn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mega{position:absolute;right:-120px;top:calc(100% + 10px);width:min(640px,90vw);background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 50px rgba(15,31,61,.16);padding:14px;display:none;grid-template-columns:1fr 1fr;gap:4px}
+.mega.open{display:grid}
+.mega a{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;white-space:normal}
+.mega a:hover{background:var(--paper)}
+.mega .dot{width:12px;height:12px;border-radius:50%;flex:none;margin-top:5px}
+.mega b{display:block;font:700 .95rem var(--display)}
+.mega small{display:block;font:400 .85rem var(--body);color:var(--muted)}
+.nav-cta{margin-left:8px}
+.menu-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:12px;width:46px;height:46px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+.menu-toggle svg{width:24px;height:24px}
+
+.drawer{position:fixed;inset:0;z-index:80;display:none}
+.drawer.open{display:block}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(15,31,61,.45)}
+.drawer-panel{position:absolute;right:0;top:0;bottom:0;width:min(360px,88vw);background:#fff;padding:18px 18px 28px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;animation:slidein .22s ease}
+.drawer-panel .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.drawer-panel a{display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:12px;text-decoration:none;font:600 1rem var(--display)}
+.drawer-panel a:hover,.drawer-panel a[aria-current="page"]{background:var(--paper)}
+.drawer-panel .group{font:700 .72rem var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:14px 10px 4px}
+.drawer-panel .dot{width:10px;height:10px;border-radius:50%;flex:none}
+@keyframes slidein{from{transform:translateX(30px)}to{transform:none}}
+
+@media (max-width:980px){
+  .nav-links,.nav-cta{display:none}
+  .menu-toggle{display:inline-flex}
+}
+@media (max-width:420px){ .brand-text{display:none} }
+
+/* ---------- Sections ---------- */
+main{display:block}
+.view{animation:rise .35s ease both}
+@keyframes rise{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+section{padding:72px 0}
+.section-tint{background:var(--paper)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:700 .78rem var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:28px;height:4px;border-radius:4px;background:var(--gold)}
+.section-head{display:grid;gap:12px;max-width:720px;margin-bottom:36px}
+.section-head p{color:var(--muted);font-size:1.1rem}
+.lead{font-size:1.18rem;color:var(--muted);max-width:60ch}
+
+/* ---------- Home hero ---------- */
+.hero{padding:56px 0 64px;background:
+  radial-gradient(900px 400px at 100% 0%,rgba(242,183,5,.16),transparent 60%),
+  radial-gradient(700px 360px at 0% 100%,rgba(20,87,46,.09),transparent 60%),#fff}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero .lead{margin:18px 0 28px}
+.hero-media{position:relative}
+.hero-media .frame{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1.1/1;background:#f3e7c1}
+.hero-media .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.hero-media::before{content:"";position:absolute;inset:auto -14px -14px auto;width:55%;height:55%;border-radius:28px;background:var(--gold);z-index:-1}
+.float-card{position:absolute;left:-24px;bottom:28px;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:flex;gap:12px;align-items:center;max-width:300px;text-decoration:none}
+.float-card .ic{width:44px;height:44px;border-radius:12px;background:#e7f1e9;color:var(--green);display:grid;place-items:center;flex:none}
+.float-card .ic svg{width:24px;height:24px}
+.float-card b{font:700 .95rem var(--display);display:block}
+.float-card small{color:var(--muted);font-size:.88rem}
+.values{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;list-style:none;padding:0}
+.values li{font:600 .82rem var(--display);padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--green)}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .float-card{left:12px;bottom:12px}
+}
+
+/* ---------- Hub cards ---------- */
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.hub-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.hub-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.hub-card .ph{aspect-ratio:16/9;overflow:hidden;background:var(--paper)}
+.hub-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.hub-card:hover .ph img{transform:scale(1.04)}
+.hub-card .bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1;border-top:5px solid var(--c)}
+.hub-card .num{font:800 .75rem var(--display);letter-spacing:.14em;color:var(--c)}
+.hub-card p{color:var(--muted);font-size:.98rem;flex:1}
+.hub-card .link-arrow{color:var(--c)}
+.hub-card.featured{grid-row:span 2}
+.hub-card.featured .ph{aspect-ratio:4/3}
+.hub-card.featured .ph img{object-position:60% 50%}
+.hub-card .badge{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--ink);font:800 .72rem var(--display);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+@media (max-width:980px){.hub-grid{grid-template-columns:1fr 1fr}.hub-card.featured{grid-column:span 2;grid-row:auto}.hub-card.featured .ph{aspect-ratio:21/9;flex:none;min-height:0}}
+@media (max-width:620px){.hub-grid{grid-template-columns:1fr}.hub-card.featured{grid-column:auto}.hub-card.featured .ph{aspect-ratio:16/9}}
+
+/* ---------- Steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--green);color:#fff;font:800 1.05rem var(--display);margin-bottom:14px}
+.steps h3{margin-bottom:6px}
+.steps p{color:var(--muted)}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* ---------- Split / feature ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split .media{border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.split .copy{display:grid;gap:16px}
+.split .copy p{color:var(--muted)}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:28px}}
+
+.ways{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.way{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:10px}
+.way .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent)}
+.way .ic svg{width:26px;height:26px}
+.way p{color:var(--muted);font-size:.98rem;flex:1}
+@media (max-width:980px){.ways{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ways{grid-template-columns:1fr}}
+
+.band{background:var(--ink);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;border:28px solid rgba(242,183,5,.25)}
+.band h2{color:#fff}
+.band p{color:#c9d3e6}
+.band .contact-lines{display:grid;gap:10px;position:relative;z-index:1}
+.band .contact-lines div{display:flex;gap:12px;align-items:center}
+.band .contact-lines svg{width:22px;height:22px;color:var(--gold);flex:none}
+.band .contact-lines b{font-family:var(--display)}
+@media (max-width:820px){.band{grid-template-columns:1fr;padding:30px 22px}}
+
+/* ---------- Hub page ---------- */
+.crumbs{font-size:.92rem;color:var(--muted);padding:18px 0 0}
+.crumbs a{text-decoration:none;color:var(--muted)}
+.crumbs a:hover{color:var(--accent);text-decoration:underline}
+.crumbs span{margin:0 8px;opacity:.6}
+.hub-hero{padding:28px 0 56px;background:linear-gradient(180deg,var(--accent-tint),#fff 85%)}
+.hub-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:22px}
+.hub-hero h1{color:var(--accent)}
+.hub-hero .slogan{font:700 italic clamp(1.15rem,2.2vw,1.45rem) var(--display);color:var(--accent);opacity:.85;margin-top:10px}
+.hub-hero .tag{font:600 .95rem var(--display);color:var(--ink);margin-top:6px;opacity:.75}
+.hub-hero .lead{margin:18px 0 26px}
+.hub-photo{position:relative}
+.hub-photo .frame{border-radius:26px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.hub-photo .frame img{width:100%;height:100%;object-fit:cover}
+.hub-photo::after{content:"";position:absolute;left:24px;right:24px;bottom:-10px;height:10px;border-radius:0 0 20px 20px;background:var(--gold)}
+@media (max-width:900px){.hub-hero-grid{grid-template-columns:1fr}.hub-photo{order:-1}}
+
+.highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-28px;position:relative;z-index:2}
+.hl{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:center;box-shadow:0 6px 18px rgba(15,31,61,.06)}
+.hl .ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--accent);color:var(--hl-ic,#fff)}
+.hl:nth-child(even) .ic{background:var(--accent-tint);color:var(--accent)}
+.hl .ic svg{width:26px;height:26px}
+.hl b{font:700 .98rem/1.25 var(--display)}
+@media (max-width:980px){.highlights{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.highlights{grid-template-columns:1fr}}
+
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}
+@media (max-width:900px){.two-col{grid-template-columns:1fr}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.panel h2{font-size:1.5rem;margin-bottom:16px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks li svg{width:22px;height:22px;flex:none;color:var(--accent);margin-top:2px}
+.vision{background:var(--accent);color:var(--accent-ink);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden}
+.vision h2{font-size:1.5rem;margin-bottom:12px;color:inherit}
+.vision p{font-size:1.15rem;line-height:1.55;position:relative;z-index:1}
+.vision::after{content:"";position:absolute;right:-50px;bottom:-50px;width:170px;height:170px;border-radius:50%;border:22px solid rgba(242,183,5,.35)}
+
+.offer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.offer-grid li{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:16px 18px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.chips li{padding:9px 15px;border-radius:999px;background:var(--accent-tint);color:var(--accent);font:600 .92rem var(--display)}
+.serve-note{color:var(--muted);margin-top:14px;max-width:65ch}
+
+.flagship{margin-top:28px;display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.flagship img{border-radius:14px;aspect-ratio:1;object-fit:cover}
+.flagship .copy{display:grid;gap:8px}
+.flagship p{color:var(--muted)}
+@media (max-width:620px){.flagship{grid-template-columns:1fr}}
+
+.commit{padding:56px 0;background:var(--ink);color:#fff;text-align:left}
+.commit blockquote{margin:0;max-width:860px;display:grid;gap:14px}
+.commit blockquote p{font:700 clamp(1.3rem,2.6vw,1.9rem)/1.35 var(--display);text-wrap:balance}
+.commit .eyebrow{color:var(--gold)}
+.commit .belong{font:800 1.05rem var(--display);letter-spacing:.06em;color:var(--gold)}
+
+/* ---------- Forms ---------- */
+.connect{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:start}
+@media (max-width:900px){.connect{grid-template-columns:1fr}}
+.contact-card{background:var(--accent-tint);border-radius:var(--radius);padding:26px;display:grid;gap:16px}
+.contact-card h3{font-size:1.25rem}
+.cline{display:flex;gap:12px;align-items:flex-start}
+.cline svg{width:22px;height:22px;color:var(--accent);flex:none;margin-top:2px}
+.cline small{display:block;color:var(--muted);font-size:.85rem}
+.cline b{font-family:var(--display);font-variant-numeric:tabular-nums}
+form.card-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:grid;gap:18px;box-shadow:0 6px 18px rgba(15,31,61,.05)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.form-row{grid-template-columns:1fr}}
+.field{display:grid;gap:6px}
+.field label,.field legend{font:700 .92rem var(--display)}
+.field .opt{font-weight:400;color:var(--muted);font-family:var(--body)}
+.field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid #c9d3cc;border-radius:12px;padding:12px 14px;width:100%;transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.field[data-invalid] input,.field[data-invalid] select,.field[data-invalid] textarea{border-color:#b42318}
+.err{color:#b42318;font-size:.88rem;min-height:0}
+.err:empty{display:none}
+.hint{color:var(--muted);font-size:.86rem}
+.count{color:var(--muted);font-size:.82rem;justify-self:end}
+fieldset.field{border:0;padding:0;margin:0}
+.radio-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+@media (max-width:560px){.radio-cards{grid-template-columns:1fr}}
+.radio-cards label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid #c9d3cc;border-radius:12px;padding:12px 14px;cursor:pointer;font:600 .95rem var(--body)}
+.radio-cards input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px;flex:none;padding:0;border:0}
+h1[tabindex="-1"]:focus{outline:none}
+.hub-card .mini{list-style:none;padding:0;margin:4px 0 6px;display:grid;gap:6px}
+.hub-card .mini li{display:flex;gap:8px;align-items:flex-start;font-size:.95rem}
+.hub-card .mini svg{width:18px;height:18px;color:var(--c);flex:none;margin-top:3px}
+.hub-card.cta{background:var(--ink);color:#fff;border-color:var(--ink);padding:24px;justify-content:center;gap:12px}
+.hub-card.cta p{color:#c9d3e6;flex:none}
+.hub-card.cta .link-arrow{color:var(--gold)}
+.radio-cards label:has(input:checked){border-color:var(--accent);background:var(--accent-tint)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+.consent input{margin-top:5px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.form-alert{border-radius:12px;padding:12px 14px;background:#fdecea;color:#8a1c12;font-size:.95rem}
+.form-alert:empty{display:none}
+.success{border-radius:var(--radius);border:1.5px solid #9fd3b1;background:#effaf3;padding:22px;display:grid;gap:12px}
+.success h3{color:#13612f;display:flex;gap:10px;align-items:center}
+.success h3 svg{width:24px;height:24px}
+.success pre{white-space:pre-wrap;font:inherit;font-size:.95rem;background:#fff;border:1px solid #cfe7d7;border-radius:10px;padding:12px;margin:0;max-height:220px;overflow:auto}
+.success .meta{color:var(--muted);font-size:.92rem}
+[hidden]{display:none!important}
+
+/* ---------- Get involved / contact ---------- */
+.page-hero{padding:40px 0 48px;background:radial-gradient(800px 340px at 100% 0%,rgba(242,183,5,.18),transparent 60%),linear-gradient(180deg,#eef5ef,#fff)}
+.page-hero h1{margin-top:12px}
+.page-hero .lead{margin-top:14px}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.dir a{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none}
+.dir a:hover{box-shadow:var(--shadow)}
+.dir .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dir b{font:700 .95rem var(--display);display:block}
+.dir small{color:var(--muted);font-variant-numeric:tabular-nums}
+
+.more-hubs{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.more-hubs a{scroll-snap-align:start;flex:0 0 230px;border-radius:14px;overflow:hidden;border:1px solid var(--line);text-decoration:none;background:#fff}
+.more-hubs img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.more-hubs div{padding:12px 14px;border-top:4px solid var(--c);font:700 .92rem var(--display)}
+
+/* ---------- Dialog ---------- */
+dialog{border:0;border-radius:20px;padding:0;max-width:min(460px,92vw);max-height:92vh;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(15,31,61,.6)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px 12px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlg-head b{font:700 1rem var(--display)}
+.dlg-body{overflow:auto;max-height:calc(92vh - 60px)}
+.icon-btn{background:none;border:1px solid var(--line);border-radius:10px;width:40px;height:40px;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.icon-btn svg{width:20px;height:20px}
+
+/* ---------- Footer ---------- */
+footer{background:#0b1730;color:#c4cee0;padding:56px 0 28px;margin-top:0}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+.foot h4{color:#fff;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:#c4cee0}
+.foot a:hover{color:#fff;text-decoration:underline}
+.foot .logo-box{background:#fff;border-radius:14px;padding:10px 14px;display:inline-block;margin-bottom:14px}
+.foot .logo-box img{height:38px}
+.foot .tagline{font:700 1.05rem var(--display);color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:18px;font-size:.9rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:820px){.foot{grid-template-columns:1fr}}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;z-index:120;box-shadow:var(--shadow)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (max-width:620px){section{padding:52px 0}.panel,form.card-form{padding:20px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" id="skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Lusaka Community Hub, home">
+      <img src="img/logo-lch.png" alt="LCH" width="250" height="110">
+      <span class="brand-text"><b>Lusaka Community Hub</b><span>Ministry · BBTTH</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-nav="home">Home</a></li>
+      <li>
+        <button class="navbtn" id="hubsBtn" aria-expanded="false" aria-controls="mega">Our Hubs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega" id="mega" role="menu"></div>
+      </li>
+      <li><a href="#get-involved" data-nav="get-involved">Get Involved</a></li>
+      <li><a href="#contact" data-nav="contact">Contact Us</a></li>
+    </ul>
+    <a class="btn btn-gold btn-sm nav-cta" href="#care-room">Get support</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-close></div>
+  <nav class="drawer-panel" aria-label="Site menu">
+    <div class="row">
+      <img src="img/logo-lch.png" alt="LCH" style="height:34px;width:auto">
+      <button class="icon-btn" data-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="drawerLinks"></div>
+  </nav>
+</div>
+
+<main id="main" tabindex="-1"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <span class="logo-box"><img src="img/logo-lch.png" alt="LCH" width="250" height="110"></span>
+        <p class="tagline">Building People. Strengthening Communities.</p>
+        <p style="margin-top:10px;max-width:42ch">Lusaka Community Hub Ministry – BBTTH (Building Bridges To The Harvest), Lusaka, Zambia.</p>
+      </div>
+      <div>
+        <h4>Our Hubs</h4>
+        <ul id="footHubs"></ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li>BBTTH Secretariat</li>
+          <li>Contact person: Thelma Chali</li>
+          <li><a href="tel:+260974845550">+260 974 845 550</a></li>
+          <li><a href="https://wa.me/260974845550" target="_blank" rel="noopener">Message us on WhatsApp</a></li>
+          <li><a href="#get-involved">Get Involved</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Lusaka Community Hub Ministry – BBTTH</span>
+      <span>You matter. You belong.</span>
+    </div>
+  </div>
+</footer>
+
+<dialog id="flyerDlg" aria-labelledby="flyerTitle">
+  <div class="dlg-head"><b id="flyerTitle">Hub flyer</b>
+    <button class="icon-btn" id="flyerClose" aria-label="Close flyer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="dlg-body"><img id="flyerImg" src="" alt="" width="620" height="1432"></div>
+</dialog>
+
+<script>
+"use strict";
+/* ================= Icons ================= */
+const I = {
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  people:'<circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.3"/><circle cx="19" cy="9" r="2.3"/><path d="M7 20v-1a5 5 0 0 1 10 0v1M1.5 19v-.5A3.5 3.5 0 0 1 5 15M22.5 19v-.5A3.5 3.5 0 0 0 19 15"/>',
+  heartHands:'<path d="M12 11.5 9.6 9.2a1.8 1.8 0 0 1 2.4-2.6 1.8 1.8 0 0 1 2.4 2.6Z"/><path d="M3 13l3.5 3.5a3 3 0 0 0 2.1.9H12M21 13l-3.5 3.5a3 3 0 0 1-2.1.9H12M3 13V9M21 13V9"/>',
+  head:'<path d="M15 21v-3h2a2 2 0 0 0 2-2v-3l1.5-.5L19 9a7 7 0 1 0-12 5v7"/><path d="M12 12.5 10.4 11a1.2 1.2 0 0 1 1.6-1.7 1.2 1.2 0 0 1 1.6 1.7Z"/>',
+  book:'<path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2Z"/><path d="M12 6v14"/>',
+  cap:'<path d="m2 9 10-5 10 5-10 5Z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/>',
+  chart:'<path d="M4 20h16"/><rect x="5" y="13" width="3" height="5"/><rect x="10.5" y="10" width="3" height="8"/><rect x="16" y="7" width="3" height="11"/><path d="m5 9 5-4 4 2 5-4M16 3h3v3"/>',
+  sprout:'<path d="M12 20v-8M12 12c0-4 3-6 7-6 0 4-3 6-7 6ZM12 14c0-3-2.5-5-6-5 0 3 2.5 5 6 5Z"/><path d="M8 20h8"/>',
+  peopleHeart:'<circle cx="6" cy="10" r="2.2"/><circle cx="18" cy="10" r="2.2"/><circle cx="12" cy="13" r="2.4"/><path d="M8 21a4 4 0 0 1 8 0M2 18a4 4 0 0 1 5-3.5M22 18a4 4 0 0 0-5-3.5"/><path d="M12 7.5 10.5 6a1.1 1.1 0 0 1 1.5-1.6A1.1 1.1 0 0 1 13.5 6Z"/>',
+  megaphone:'<path d="M3 10v4h3l7 5V5L6 10Z"/><path d="M6 14l1.5 5h2.5l-1.3-4.6M17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11"/>',
+  video:'<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10 6-3.5v11l-6-3.5"/>',
+  layers:'<path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>',
+  coins:'<ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v4c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6M5 10v4c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-4M5 14v4c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-4"/>',
+  pulse:'<path d="M20.4 12.6 12 21l-8.4-8.4A5 5 0 0 1 12 6a5 5 0 0 1 8.4 6.6Z"/><path d="M3 12h4l2-3 3 6 2-3h7"/>',
+  hands:'<path d="M12 9 10 7a1.6 1.6 0 0 1 2-2.4A1.6 1.6 0 0 1 14 7Z"/><path d="M2 15h4l5 3h5a2 2 0 0 0 0-4h-4M2 20h6l7 1.5L22 17"/>',
+  phone:'<path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2Z"/>',
+  wa:'<path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1Z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4.5 4.5 0 0 1-2.2-2.2l.8-1-1-2Z"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  pin:'<path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/>',
+  bridge:'<path d="M2 17h20M4 17v-5M20 17v-5M2 12c4 0 6-5 10-5s6 5 10 5M8 17v-3M12 17v-4M16 17v-3"/>',
+  handshake:'<path d="m11 17 2 2a1.4 1.4 0 0 0 2-2M13 15l2.5 2.5a1.4 1.4 0 0 0 2-2l-3-3M2 12l4-4 4 1.5 3-1.5a2 2 0 0 1 2.3.4L22 13l-3 3M2 12l7 7M6 8l-1 5"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/>',
+  copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>',
+  leaf:'<path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19 13 11"/>',
+  ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>'
+};
+const svg = (n, sw = 1.8) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
+
+/* ================= Content ================= */
+const SECRETARIAT = { name:'BBTTH Secretariat', person:'Thelma Chali', phone:'+260974845550' };
+const BRIDGE_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSdgaoqgxu9Q8BsIOqpH9x4gSpu2Ov6nizhBBWq29xwubw4llw/viewform';
+
+const HUBS = [
+ { id:'care-room', key:'care', name:'Care Room Hub', short:'Care Room', color:'#1c6b34', tint:'#e6f2e9',
+   slogan:'A Safe Space to Be Heard, Supported & Empowered.',
+   tagline:'The Welcoming and Connecting Centre of the Community Hub Ministry',
+   card:'Our front door. We listen, offer initial support and connect you with the right help.',
+   phone:'+260974308315',
+   intro:'The Care Room Hub receives people, listens to their needs and offers initial support. From here we make referrals, coordinate follow-up and connect each person with the right Community Hub, church ministry, pastoral support or external service. Every person who seeks help is treated with dignity, compassion, respect and care.',
+   highlights:[['Compassion & Care','heartHands'],['Emotional Wellbeing','head'],['Support & Connection','people'],['Dignity & Belonging','hands']],
+   purpose:['Welcome people into a warm and supportive environment','Provide a safe space where people can be heard','Help identify needs and the support required','Connect people with appropriate support services','Make referrals to Community Hubs, ministries and external services','Encourage follow-up and lasting relationships','Strengthen care and communication across the ministry'],
+   vision:'A welcoming, compassionate environment where everyone feels seen, valued and supported, and is connected to the right help, to meaningful relationships and ultimately to Christ.',
+   offerTitle:'What we do',
+   offer:['A listening ear and a safe space to talk','Encouragement and initial support','Prayer, where welcomed','Help identifying your needs','Referrals to Community Hubs, pastoral teams and external providers','Follow-up and coordination of care'],
+   serveTitle:'Who can approach the Care Room Hub?',
+   serve:['Anyone needing guidance','Anyone needing encouragement','Anyone looking for support services','People of every background','Members of any church, or none'],
+   serveNote:'The Care Room Hub is open to the wider community, whatever your background or church affiliation.',
+   commitment:'No one should feel unseen, unheard or alone when seeking help. Every interaction is an opportunity to show Christ’s love through compassion, respect and care.'
+ },
+ { id:'student-success', key:'student', name:'Student Success Hub', short:'Student Success', color:'#0d3b8c', tint:'#e6eefb',
+   slogan:'Learn, Grow, Achieve.',
+   tagline:'Empowering Students to Learn, Grow and Succeed',
+   card:'Academic guidance, mentorship, life skills and career readiness for learners and young people.',
+   phone:'+260974653379',
+   intro:'We support learners through their academic journey and into their careers. Success includes good grades and much more: personal growth, character, leadership, relationships, emotional wellbeing and readiness for work.',
+   highlights:[['Academic Support','book'],['Study Skills & Resources','cap'],['Personal Development','people'],['Career Readiness','chart']],
+   purpose:['Support academic and personal development','Build strong study habits and skills','Offer mentorship and guidance','Teach practical life skills','Develop leadership, character and responsibility','Prepare students for further education and work','Encourage teamwork and communication'],
+   vision:'Students who are confident, well-rounded and purpose-driven, and who contribute to their families, workplaces and communities.',
+   offerTitle:'What we offer',
+   offer:['Academic guidance and study support','Mentorship','Career guidance and readiness','Leadership and character development','Financial literacy and entrepreneurship awareness','Communication and problem-solving skills','Digital literacy and employability skills','Christian values and responsible living'],
+   serveTitle:'Who we serve',
+   serve:['School learners','University and college students','Recent graduates','Young people preparing for further education or work'],
+   commitment:'Every student has potential worth developing. We walk with students as they overcome challenges and build a purposeful future.'
+ },
+ { id:'legacy-circle', key:'legacy', name:'Legacy Circle Hub', short:'Legacy Circle', color:'#14275e', tint:'#fbf3d9', iconInk:'#f2b705',
+   slogan:'People. Purpose. Lasting Impact.',
+   tagline:'Celebrating Experience. Inspiring Generations. Building Legacies.',
+   card:'Fellowship, mentorship and purposeful engagement for retirees and seasoned adults.',
+   phone:'+260979393236',
+   intro:'A platform for seasoned adults, retirees and pre-retirees to stay connected, purposeful and engaged in society. We value the experience, wisdom and skills you have built over a lifetime, and the difference they can make for others.',
+   highlights:[['Intergenerational Connection','people'],['Legacy Planning','sprout'],['Wisdom & Experience Sharing','book'],['Support & Belonging','peopleHeart']],
+   purpose:['Promote purposeful living at every stage of life','Create opportunities for friendship and fellowship','Honour and preserve the wisdom of seasoned individuals','Encourage mentorship and intergenerational knowledge sharing','Enable skills transfer and continued contribution','Promote wellness, personal growth and spiritual encouragement','Encourage community service'],
+   vision:'Seasoned individuals who remain valued, connected and purposeful, contributing to their families and communities.',
+   offerTitle:'What we offer',
+   offer:['Mentorship and intergenerational engagement','Retirement and life-transition conversations','Wellness and personal development sessions','Fellowship, prayer and social gatherings','Skills sharing and knowledge transfer','Community service and volunteering','Cultural activities and shared learning'],
+   serveTitle:'Who we serve',
+   serve:['Retired and pre-retired professionals','Business owners','Former public servants','Educators','Health professionals','Ministry leaders','Community elders'],
+   commitment:'Retirement does not end purpose or contribution. Every generation has something meaningful to offer.'
+ },
+ { id:'mentorship-leadership', key:'mentorship', name:'Mentorship and Leadership Development Hub', short:'Mentorship & Leadership', color:'#4a1f6e', tint:'#f1eaf7',
+   slogan:'Guide. Equip. Empower.',
+   tagline:'Developing People. Raising Leaders. Transforming Communities.',
+   card:'Mentoring, leadership training and workshops that raise servant-hearted leaders.',
+   phone:'+260979440111',
+   intro:'We identify, develop and equip people to become confident, responsible and effective leaders in their families, workplaces, churches and communities. Leadership grows through learning, mentorship, experience, character, accountability and service.',
+   highlights:[['Mentorship & Guidance','people'],['Leadership Development','chart'],['Skills & Capacity Building','book'],['Personal & Professional Growth','peopleHeart']],
+   purpose:['Identify and nurture leadership potential','Support personal and professional development','Connect people with experienced mentors','Build communication, teamwork and interpersonal skills','Encourage servant leadership, accountability and character','Prepare people to contribute positively to society'],
+   vision:'A generation of confident, responsible and servant-hearted leaders who transform families, communities and society.',
+   offerTitle:'What we offer',
+   offer:['One-on-one and group mentorship','Leadership workshops and development programmes','Personal development seminars','Leadership breakfasts and panel discussions','Public speaking and communication training','Team building and networking','Workplace readiness','Entrepreneurship and community leadership','Book discussions and knowledge-sharing sessions'],
+   serveTitle:'Who we serve',
+   serve:['Students','Young professionals','Emerging leaders','Church workers','Entrepreneurs','Established professionals','Anyone seeking growth and mentorship'],
+   commitment:'Leadership grows when people have the right guidance, opportunities and relationships. We help people lead well and raise up others in turn.'
+ },
+ { id:'wealth-health-debt', key:'wealth', name:'Wealth, Health and Debt Management Hub', short:'Wealth, Health & Debt', color:'#0f4d40', tint:'#e5f1ec',
+   slogan:'Manage. Improve. Grow.',
+   tagline:'Empowering Lives Through Financial Wisdom, Healthy Living and Responsible Choices.',
+   card:'Financial literacy, budgeting, debt management and healthy living for individuals and families.',
+   phone:'+260977669060',
+   intro:'We give individuals and families the knowledge and practical guidance to build financial wellbeing, live healthily and manage debt responsibly.',
+   highlights:[['Debt Guidance & Support','coins'],['Health & Wellbeing Resources','pulse'],['Wealth Building & Financial Literacy','chart'],['Personal Planning & Long-term Growth','people']],
+   purpose:['Promote financial literacy','Encourage budgeting and saving','Raise awareness of wealth creation and entrepreneurship','Promote responsible debt management','Encourage healthy lifestyles and disease prevention','Support family wellbeing','Share practical knowledge for sustainable futures'],
+   vision:'Individuals and families equipped with the knowledge and habits for financial wellbeing and sustainable futures.',
+   offerTitle:'What we offer',
+   offer:['Money management and budgeting sessions','Debt management education','Entrepreneurship and business development sessions','Wealth creation awareness','Healthy lifestyle and disease prevention education','Nutrition and wellness awareness','Relationships and family wellbeing discussions','Knowledge-sharing sessions'],
+   serveTitle:'Who we serve',
+   serve:['Individuals and families','Employees and civil servants','Young professionals','Entrepreneurs and small business owners','Retirees','The wider community'],
+   commitment:'Informed choices and responsible habits build stronger individuals and families. We offer the education and practical guidance to support both.'
+ },
+ { id:'community-service', key:'community', name:'Community Service Hub', short:'Community Service', color:'#1f6b2a', tint:'#e9f4e4',
+   slogan:'Serve. Uplift. Create Impact.',
+   tagline:'Serving Communities. Inspiring Change. Making a Difference.',
+   card:'Volunteering and outreach, including our flagship Keep Lusaka Clean initiative.',
+   phone:'+260967120503',
+   intro:'We encourage practical service, volunteering and community engagement, so that people take care of their surroundings and of one another.',
+   highlights:[['Volunteer Opportunities','people'],['Community Support Initiatives','hands'],['Social Impact Projects','sprout'],['Collaboration for Positive Change','peopleHeart']],
+   purpose:['Promote volunteering and active citizenship','Encourage environmental cleanliness and sanitation','Support community wellbeing','Mobilise people’s time, skills and resources','Build partnerships for community impact','Show compassion through practical service'],
+   vision:'Cleaner, healthier, transformed communities where people take responsibility and contribute to the wellbeing of others.',
+   offerTitle:'What we do',
+   offer:['Community clean-ups and sanitation','Tree planting and environmental awareness','School beautification','Hospital visits and outreach','Blood donation awareness and drives','Community volunteering','Disaster response','Community health awareness'],
+   flagship:true,
+   serveTitle:'Who we serve',
+   serve:['Residents','Schools','Youth groups','Universities and colleges','Community organisations','Local leaders','Volunteers','The wider public'],
+   commitment:'Lasting change comes when people serve together, through action, partnership and shared responsibility.'
+ },
+ { id:'marketing-media', key:'media', name:'Marketing, Awareness and Media Hub', short:'Marketing & Media', color:'#13213f', tint:'#f8eedd', iconInk:'#e0a548',
+   slogan:'Create. Communicate. Amplify.',
+   tagline:'Creating Awareness. Sharing Stories. Connecting Communities.',
+   card:'Communications, branding, media and the stories of our community’s impact.',
+   phone:'+260975211122',
+   intro:'We raise awareness of the ministry, promote programmes and events across all seven Hubs, and share the stories of community impact that inspire others to take part.',
+   highlights:[['Brand & Awareness Campaigns','megaphone'],['Content Creation & Media','video'],['Digital Engagement & Outreach','layers'],['Storytelling & Impact Communication','people']],
+   purpose:['Raise awareness of the ministry and its work','Promote programmes and events across the seven Hubs','Share stories of community impact','Strengthen the ministry’s brand and communication','Encourage participation and partnerships','Help more people find and benefit from the Hubs'],
+   vision:'An informed, connected and engaged community.',
+   offerTitle:'What we do',
+   offer:['Public awareness and engagement campaigns','Programme and event promotion','Branding and communication strategy','Graphic design','Photography and videography','Event coverage','Social media and digital communication','Impact stories, reports and publications'],
+   serveTitle:'Who we serve',
+   serve:['The wider community','Individuals','Organisations','Partners','Volunteers'],
+   commitment:'We tell the story of the seven Hubs clearly, so that more people can find them, join them and benefit from them.'
+ }
+];
+const HUB_BY_ID = Object.fromEntries(HUBS.map(h => [h.id, h]));
+const VALUES = ['Compassion','Integrity','Service','Excellence','Respect','Accountability','Collaboration'];
+
+/* ================= Helpers ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtPhone = p => { const d = p.replace(/\D/g,''); return d.startsWith('260') ? `+260 ${d.slice(3,6)} ${d.slice(6,9)} ${d.slice(9)}` : p; };
+const waLink = (p, text) => `https://wa.me/${p.replace(/\D/g,'')}${text ? '?text=' + encodeURIComponent(text) : ''}`;
+function toast(msg){ const t = document.createElement('div'); t.className='toast'; t.setAttribute('role','status'); t.textContent = msg; document.body.appendChild(t); setTimeout(()=>t.remove(), 2600); }
+function setAccent(h){
+  const r = document.documentElement.style;
+  r.setProperty('--accent', h ? h.color : '#14572e');
+  r.setProperty('--accent-tint', h ? h.tint : '#e7f1e9');
+}
+
+/* ================= Shared blocks ================= */
+const hubCard = (h, i, featured) => `
+  <a class="hub-card${featured ? ' featured' : ''}" href="#${h.id}" style="--c:${h.color}">
+    ${featured ? '<span class="badge">Start here</span>' : ''}
+    <div class="ph"><img src="img/hub-${h.key}.jpg" alt="" loading="lazy" width="825" height="340"></div>
+    <div class="bd">
+      <span class="num">HUB ${String(i + 1).padStart(2,'0')}</span>
+      <h3>${esc(h.name)}</h3>
+      <p>${esc(h.card)}</p>
+      ${featured ? `<ul class="mini">${['Listening and encouragement','Prayer, where welcomed','Referrals to the right Hub or service','Follow-up so no one is left alone'].map(t => `<li>${svg('check',2.4)}<span>${t}</span></li>`).join('')}</ul>` : ''}
+      <span class="link-arrow">Explore ${esc(h.short)} ${svg('arrow',2.2)}</span>
+    </div>
+  </a>`;
+
+const waysBlock = () => `
+  <div class="ways">
+    <div class="way"><span class="ic">${svg('heartHands')}</span><h3>Access support</h3><p>Seek guidance, encouragement, mentorship or learning through the Community Hub that fits your need.</p><a class="link-arrow" href="#care-room">Start at the Care Room ${svg('arrow',2.2)}</a></div>
+    <div class="way"><span class="ic">${svg('bridge')}</span><h3>Become a Bridge Builder</h3><p>Help build relationships and connect people to the opportunities and support they need.</p><a class="link-arrow" href="${BRIDGE_FORM}" target="_blank" rel="noopener">Open the sign-up form ${svg('ext',2)}</a></div>
+    <div class="way"><span class="ic">${svg('people')}</span><h3>Volunteer your time and skills</h3><p>Support Hub activities, programmes and community initiatives such as Keep Lusaka Clean.</p><a class="link-arrow" href="#get-involved" data-scroll="join">Volunteer with us ${svg('arrow',2.2)}</a></div>
+    <div class="way"><span class="ic">${svg('handshake')}</span><h3>Partner with us</h3><p>Individuals, organisations, institutions and businesses can share expertise, resources or sponsorship.</p><a class="link-arrow" href="#get-involved" data-scroll="join">Talk about a partnership ${svg('arrow',2.2)}</a></div>
+  </div>`;
+
+/* Reusable WhatsApp enquiry form. Nothing leaves the page until the visitor presses Send in WhatsApp. */
+function formBlock({ id, to, toLabel, title, intro, purposes, showHubSelect, showOrg }) {
+  return `
+  <form class="card-form" id="${id}" novalidate data-to="${esc(to)}" data-to-label="${esc(toLabel)}">
+    <div><h2 style="font-size:1.5rem">${esc(title)}</h2><p class="hint" style="margin-top:6px;font-size:.98rem">${esc(intro)}</p></div>
+    <div class="form-alert" role="alert" data-alert></div>
+    <fieldset class="field" data-field="purpose">
+      <legend>I would like to</legend>
+      <div class="radio-cards">
+        ${purposes.map((p, i) => `<label><input type="radio" name="purpose" id="${id}-p${i}" value="${esc(p)}"${i === 0 ? ' checked' : ''}> ${esc(p)}</label>`).join('')}
+      </div>
+      <span class="err" data-err></span>
+    </fieldset>
+    ${showHubSelect ? `
+    <div class="field" data-field="hub">
+      <label for="${id}-hub">Which Hub? <span class="opt">(optional)</span></label>
+      <select id="${id}-hub" name="hub">
+        <option value="">Not sure yet, please advise me</option>
+        ${HUBS.map(h => `<option value="${esc(h.name)}">${esc(h.name)}</option>`).join('')}
+      </select>
+    </div>` : ''}
+    ${showOrg ? `
+    <div class="field" data-field="org" data-show-when="Partner with the ministry" hidden>
+      <label for="${id}-org">Organisation or business name</label>
+      <input id="${id}-org" name="org" autocomplete="organization" maxlength="120">
+      <span class="err" data-err></span>
+    </div>` : ''}
+    <div class="form-row">
+      <div class="field" data-field="name">
+        <label for="${id}-name">Your name</label>
+        <input id="${id}-name" name="name" autocomplete="name" maxlength="80" required>
+        <span class="err" data-err></span>
+      </div>
+      <div class="field" data-field="phone">
+        <label for="${id}-phone">Phone or WhatsApp number</label>
+        <input id="${id}-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="e.g. 097 123 4567" required>
+        <span class="err" data-err></span>
+      </div>
+    </div>
+    <div class="field" data-field="area">
+      <label for="${id}-area">Area or neighbourhood <span class="opt">(optional)</span></label>
+      <input id="${id}-area" name="area" maxlength="80" placeholder="e.g. Kabulonga, Chilenje">
+    </div>
+    <div class="field" data-field="message">
+      <label for="${id}-msg">How can we help?</label>
+      <textarea id="${id}-msg" name="message" maxlength="600" required></textarea>
+      <span class="count" data-count>0 / 600</span>
+      <span class="err" data-err></span>
+    </div>
+    <div class="field" data-field="consent">
+      <label class="consent"><input type="checkbox" name="consent" id="${id}-consent" required> <span>I agree that the ministry may contact me about this enquiry.</span></label>
+      <span class="err" data-err></span>
+    </div>
+    <div class="btn-row"><button class="btn btn-primary" type="submit">${svg('wa',2)} Prepare my WhatsApp message</button></div>
+    <p class="hint">Your message goes to ${esc(toLabel)} on ${esc(fmtPhone(to))}. Nothing is sent until you press Send in WhatsApp.</p>
+  </form>
+  <div class="success" id="${id}-ok" hidden tabindex="-1">
+    <h3>${svg('check',2.4)} Your message is ready</h3>
+    <p class="meta">Press the button below to open WhatsApp with your message filled in, then press Send. If WhatsApp doesn't open, copy the message and send it to <b>${esc(fmtPhone(to))}</b>.</p>
+    <pre data-preview></pre>
+    <div class="btn-row">
+      <a class="btn btn-wa" data-wa target="_blank" rel="noopener">${svg('wa',2)} Open WhatsApp</a>
+      <button class="btn btn-ghost" type="button" data-copy>${svg('copy',2)} Copy message</button>
+      <button class="btn btn-ghost" type="button" data-edit>Edit message</button>
+    </div>
+  </div>`;
+}
+
+/* ================= Views ================= */
+function viewHome(){
+  setAccent(null);
+  const [care, ...rest] = HUBS;
+  return `
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Building Bridges To The Harvest</span>
+        <h1 style="margin-top:14px">Building People. <em>Strengthening Communities.</em></h1>
+        <p class="lead">Lusaka Community Hub Ministry helps individuals grow, strengthens families and transforms communities through care, mentorship, empowerment, service and meaningful connection.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#care-room">${svg('heartHands',2)} Find support</a>
+          <a class="btn btn-ghost" href="#get-involved">Get involved</a>
+        </div>
+        <ul class="values" aria-label="Our core values">${VALUES.map(v => `<li>${v}</li>`).join('')}</ul>
+      </div>
+      <div class="hero-media">
+        <div class="frame"><img src="img/launch-team.jpg" alt="Two smiling volunteers in navy T-shirts holding a refuse bag and broom during a community clean-up in Lusaka" width="830" height="755"></div>
+        <a class="float-card" href="#community-service">
+          <span class="ic">${svg('leaf',2)}</span>
+          <span><b>Keep Lusaka Clean</b><small>Our flagship community initiative. Join a clean-up.</small></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tint" aria-labelledby="hubs-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Seven Community Hubs</span>
+        <h2 id="hubs-h">One ministry, a place for every season of life</h2>
+        <p>Each Hub focuses on a different need. If you're not sure where to begin, the Care Room Hub will listen and point you to the right one.</p>
+      </div>
+      <div class="hub-grid">
+        ${hubCard(care, 0, true)}
+        ${rest.map((h, i) => hubCard(h, i + 1)).join('')}
+        <a class="hub-card cta" href="#contact">
+          <h3 style="color:#fff">Not sure where to start?</h3>
+          <p>Tell the Secretariat what you need and we will connect you with the right Hub.</p>
+          <span class="link-arrow">Contact the Secretariat ${svg('arrow',2.2)}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2 id="how-h">From first hello to the right support</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Reach out</h3><p>Visit the Care Room Hub, send a WhatsApp message or call the Secretariat. You don't need to belong to a church.</p></li>
+        <li><h3>We listen</h3><p>Someone takes time to hear your story, offers encouragement and prayer where welcomed, and helps identify what you need.</p></li>
+        <li><h3>We connect you</h3><p>We refer you to the right Hub, ministry, pastoral team or external service, and we follow up so you're not left alone.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-tint" aria-labelledby="klc-h">
+    <div class="wrap split">
+      <div class="media"><img src="img/launch-poster.jpg" alt="Lusaka Community Hub launch poster showing volunteers cleaning a Lusaka street, with the words Are you ready to serve?" loading="lazy" width="1000" height="1000"></div>
+      <div class="copy">
+        <span class="eyebrow">Flagship initiative</span>
+        <h2 id="klc-h">Keep Lusaka Clean</h2>
+        <p>Led by the Community Service Hub, Keep Lusaka Clean promotes shared responsibility for clean public spaces, good sanitation and a healthier city. Volunteers of every age join clean-ups, tree planting and school beautification days.</p>
+        <p>Are you ready to serve? Bring your gloves and a friend.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#community-service">Join a clean-up</a>
+          <a class="btn btn-ghost" href="#get-involved">Other ways to help</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="gi-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get involved</span>
+        <h2 id="gi-h">There is a place for you</h2>
+        <p>Community transformation happens when people connect, support one another and work together.</p>
+      </div>
+      ${waysBlock()}
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">${contactBand()}</div>
+  </section>`;
+}
+
+const contactBand = () => `
+  <div class="band">
+    <div style="position:relative;z-index:1;display:grid;gap:12px">
+      <h2>We'd love to hear from you</h2>
+      <p>Our Secretariat will direct your enquiry to the right Hub or team, whether you're looking for support, a programme, a way to volunteer or a partnership.</p>
+      <div class="btn-row" style="margin-top:6px">
+        <a class="btn btn-gold" href="${waLink(SECRETARIAT.phone)}" target="_blank" rel="noopener">${svg('wa',2)} WhatsApp the Secretariat</a>
+        <a class="btn" style="color:#fff;border-color:rgba(255,255,255,.4)" href="#contact">Send an enquiry</a>
+      </div>
+    </div>
+    <div class="contact-lines">
+      <div>${svg('user')}<span><b>${SECRETARIAT.person}</b><br>Contact person, ${SECRETARIAT.name}</span></div>
+      <div>${svg('phone')}<span><b>${fmtPhone(SECRETARIAT.phone)}</b><br>Call or WhatsApp</span></div>
+    </div>
+  </div>`;
+
+function viewHub(h){
+  setAccent(h);
+  const idx = HUBS.indexOf(h);
+  const others = HUBS.filter(x => x !== h);
+  return `
+  <section class="hub-hero" style="padding-top:0">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span>/</span><a href="#home" data-scroll="hubs-h">Our Hubs</a><span>/</span><span aria-current="page" style="margin:0;opacity:1">${esc(h.short)}</span></nav>
+      <div class="hub-hero-grid">
+        <div>
+          <span class="eyebrow">Hub ${String(idx + 1).padStart(2,'0')} of 07</span>
+          <h1 style="margin-top:12px">${esc(h.name)}</h1>
+          <p class="slogan">${esc(h.slogan)}</p>
+          <p class="tag">${esc(h.tagline)}</p>
+          <p class="lead">${esc(h.intro)}</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#${h.id}" data-scroll="connect">${svg('wa',2)} Connect with this Hub</a>
+            <button class="btn btn-ghost" type="button" data-flyer="${h.key}">${svg('image',2)} View Hub flyer</button>
+          </div>
+        </div>
+        <div class="hub-photo"><div class="frame"><img src="img/hub-${h.key}.jpg" alt="Members of the ${esc(h.name)} in conversation" width="825" height="340"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="highlights" style="${h.iconInk ? `--hl-ic:${h.iconInk}` : ''}">
+      ${h.highlights.map(([t, ic]) => `<div class="hl"><span class="ic">${svg(ic)}</span><b>${esc(t)}</b></div>`).join('')}
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>Our purpose</h2>
+        <ul class="checks">${h.purpose.map(p => `<li>${svg('check',2.4)}<span>${esc(p)}</span></li>`).join('')}</ul>
+      </div>
+      <div class="vision"><h2>Our vision</h2><p>${esc(h.vision)}</p></div>
+    </div>
+  </section>
+
+  <section class="section-tint">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">${esc(h.offerTitle)}</span><h2>How the ${esc(h.short)} Hub can help</h2></div>
+      <ul class="offer-grid">${h.offer.map(o => `<li>${esc(o)}</li>`).join('')}</ul>
+      ${h.flagship ? `
+      <div class="flagship">
+        <img src="img/launch-poster.jpg" alt="Keep Lusaka Clean volunteers during a street clean-up" loading="lazy" width="1000" height="1000">
+        <div class="copy">
+          <span class="eyebrow">Our flagship initiative</span>
+          <h3 style="font-size:1.4rem">Keep Lusaka Clean</h3>
+          <p>Keep Lusaka Clean promotes shared responsibility for cleanliness, sanitation and the care of public spaces, for a healthier city we can all be proud of.</p>
+          <div><a class="btn btn-primary btn-sm" href="#${h.id}" data-scroll="connect">Volunteer for a clean-up</a></div>
+        </div>
+      </div>` : ''}
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:20px"><span class="eyebrow">Who we serve</span><h2>${esc(h.serveTitle)}</h2></div>
+      <ul class="chips">${h.serve.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+      ${h.serveNote ? `<p class="serve-note">${esc(h.serveNote)}</p>` : ''}
+    </div>
+  </section>
+
+  <section class="commit">
+    <div class="wrap">
+      <blockquote>
+        <span class="eyebrow">Our commitment</span>
+        <p>${esc(h.commitment)}</p>
+        <span class="belong">YOU MATTER. YOU BELONG.</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="connect" aria-label="Connect with this Hub">
+    <div class="wrap connect">
+      <div class="contact-card">
+        <span class="eyebrow">Talk to us</span>
+        <h3>${esc(h.name)}</h3>
+        <div class="cline">${svg('wa')}<span><small>Hub WhatsApp line</small><b>${fmtPhone(h.phone)}</b></span></div>
+        <div class="cline">${svg('phone')}<span><small>Not sure this is the right Hub?</small><b>${SECRETARIAT.name}, ${fmtPhone(SECRETARIAT.phone)}</b></span></div>
+        <div class="btn-row">
+          <a class="btn btn-wa btn-sm" href="${waLink(h.phone)}" target="_blank" rel="noopener">${svg('wa',2)} Chat now</a>
+          <a class="btn btn-ghost btn-sm" href="tel:${h.phone}">${svg('phone',2)} Call ${fmtPhone(h.phone)}</a>
+        </div>
+      </div>
+      ${formBlock({ id:'f-' + h.key, to:h.phone, toLabel:h.name, title:'Send a message to this Hub',
+        intro:'Tell us a little about yourself and what you need. We will prepare a WhatsApp message for you to send.',
+        purposes:['Request support','Join a programme','Volunteer with this Hub','Ask a question'] })}
+    </div>
+  </section>
+
+  <section class="section-tint" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:18px"><h2 id="more-h" style="font-size:1.4rem">Explore the other Hubs</h2></div>
+      <div class="more-hubs">${others.map(o => `<a href="#${o.id}" style="--c:${o.color}"><img src="img/hub-${o.key}.jpg" alt="" loading="lazy" width="825" height="340"><div>${esc(o.name)}</div></a>`).join('')}</div>
+    </div>
+  </section>`;
+}
+
+function viewInvolved(){
+  setAccent(null);
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Get involved</span>
+      <h1>There is a place for you!</h1>
+      <p class="lead">Community transformation happens when people connect, support one another and work together. Choose the way that suits you best.</p>
+    </div>
+  </section>
+  <section style="padding-top:40px">
+    <div class="wrap">${waysBlock()}</div>
+  </section>
+  <section class="section-tint" id="join">
+    <div class="wrap connect">
+      <div class="contact-card">
+        <span class="eyebrow">Take the first step</span>
+        <h3>The BBTTH Secretariat will guide you</h3>
+        <p>Tell us how you'd like to take part and we will connect you with the right Hub or team.</p>
+        <div class="cline">${svg('user')}<span><small>Contact person</small><b>${SECRETARIAT.person}</b></span></div>
+        <div class="cline">${svg('wa')}<span><small>Call or WhatsApp</small><b>${fmtPhone(SECRETARIAT.phone)}</b></span></div>
+        <div class="cline">${svg('bridge')}<span><small>Prefer a form?</small><a href="${BRIDGE_FORM}" target="_blank" rel="noopener"><b>Bridge Builder sign-up form</b></a></span></div>
+      </div>
+      ${formBlock({ id:'f-involved', to:SECRETARIAT.phone, toLabel:'the BBTTH Secretariat', title:'Tell us how you would like to help',
+        intro:'We will prepare a WhatsApp message to the Secretariat for you to send.',
+        purposes:['Access support','Become a Bridge Builder','Volunteer my time and skills','Partner with the ministry'], showHubSelect:true, showOrg:true })}
+    </div>
+  </section>`;
+}
+
+function viewContact(){
+  setAccent(null);
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Contact us</span>
+      <h1>We'd love to hear from you!</h1>
+      <p class="lead">Reach out to seek support, join a programme, volunteer or partner with us. Our Secretariat will direct your enquiry to the appropriate Hub or team.</p>
+    </div>
+  </section>
+  <section style="padding-top:40px">
+    <div class="wrap connect">
+      <div class="contact-card">
+        <span class="eyebrow">Secretariat</span>
+        <h3>Lusaka Community Hub Ministry – BBTTH Secretariat</h3>
+        <div class="cline">${svg('user')}<span><small>Contact person</small><b>${SECRETARIAT.person}</b></span></div>
+        <div class="cline">${svg('phone')}<span><small>Phone and WhatsApp</small><b>${fmtPhone(SECRETARIAT.phone)}</b></span></div>
+        <div class="cline">${svg('pin')}<span><small>Location</small><b>Lusaka, Zambia</b></span></div>
+        <div class="btn-row">
+          <a class="btn btn-wa btn-sm" href="${waLink(SECRETARIAT.phone)}" target="_blank" rel="noopener">${svg('wa',2)} Chat now</a>
+          <a class="btn btn-ghost btn-sm" href="tel:${SECRETARIAT.phone}">${svg('phone',2)} Call</a>
+        </div>
+      </div>
+      ${formBlock({ id:'f-contact', to:SECRETARIAT.phone, toLabel:'the BBTTH Secretariat', title:'Send us an enquiry',
+        intro:'Fill in the form and we will prepare a WhatsApp message to the Secretariat for you to send.',
+        purposes:['Seek support','Join a programme','Volunteer','Partner with the ministry'], showHubSelect:true })}
+    </div>
+  </section>
+  <section class="section-tint" aria-labelledby="dir-h">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:20px"><span class="eyebrow">Hub directory</span><h2 id="dir-h">Contact a Hub directly</h2></div>
+      <div class="dir">${HUBS.map(h => `<a href="#${h.id}"><span class="dot" style="background:${h.color}"></span><span><b>${esc(h.name)}</b><small>WhatsApp ${fmtPhone(h.phone)}</small></span></a>`).join('')}</div>
+    </div>
+  </section>`;
+}
+
+/* ================= Forms: validation + WhatsApp hand-off ================= */
+const clean = (s, max) => String(s || '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').replace(/[ \t]+/g, ' ').trim().slice(0, max);
+function normalisePhone(raw){
+  const d = raw.replace(/[\s\-().]/g, '');
+  if (/^0[79]\d{8}$/.test(d)) return '+260' + d.slice(1);           // 097..., 096..., 095..., 077..., 076...
+  if (/^(\+?260)[79]\d{8}$/.test(d)) return '+260' + d.replace(/^\+?260/, '');
+  if (/^\+[1-9]\d{7,14}$/.test(d)) return d;                          // other international numbers
+  return null;
+}
+function setErr(form, name, msg){
+  const f = $(`[data-field="${name}"]`, form); if (!f) return;
+  const e = $('[data-err]', f);
+  if (msg){ f.setAttribute('data-invalid',''); e.textContent = msg; $$('input,select,textarea', f).forEach(x => x.setAttribute('aria-invalid','true')); }
+  else { f.removeAttribute('data-invalid'); if (e) e.textContent = ''; $$('input,select,textarea', f).forEach(x => x.removeAttribute('aria-invalid')); }
+}
+function validate(form, focus){
+  const fd = new FormData(form);
+  const v = {
+    purpose: clean(fd.get('purpose'), 60), hub: clean(fd.get('hub'), 80), org: clean(fd.get('org'), 120),
+    name: clean(fd.get('name'), 80), phoneRaw: clean(fd.get('phone'), 20), area: clean(fd.get('area'), 80),
+    message: clean(String(fd.get('message') || '').replace(/\r/g,''), 600), consent: fd.get('consent') === 'on'
+  };
+  const errs = {};
+  if (!v.purpose) errs.purpose = 'Choose what you would like to do.';
+  if (v.name.length < 2) errs.name = 'Enter your name.';
+  else if (!/^[\p{L}\p{M}' .-]+$/u.test(v.name)) errs.name = 'Use letters only in your name.';
+  v.phone = normalisePhone(v.phoneRaw);
+  if (!v.phoneRaw) errs.phone = 'Enter a phone number so we can reply.';
+  else if (!v.phone) errs.phone = 'Enter a valid number, for example 097 123 4567 or +260 97 123 4567.';
+  if (v.message.length < 10) errs.message = 'Tell us a little more (at least 10 characters).';
+  const orgField = $('[data-field="org"]', form);
+  if (orgField && !orgField.hidden && v.org.length < 2) errs.org = 'Enter the organisation or business name.';
+  if (!v.consent) errs.consent = 'Tick the box so we can contact you.';
+  ['purpose','name','phone','message','org','consent'].forEach(k => setErr(form, k, errs[k]));
+  const alert = $('[data-alert]', form);
+  const n = Object.keys(errs).length;
+  alert.textContent = n ? `Please fix ${n === 1 ? 'the highlighted field' : 'the ' + n + ' highlighted fields'} below.` : '';
+  if (n && focus){ const first = $('[data-invalid] input,[data-invalid] textarea,[data-invalid] select', form); first && first.focus(); }
+  return n ? null : v;
+}
+function buildMessage(form, v){
+  const lines = [`Hello ${form.dataset.toLabel.replace(/^the /,'')},`, '', `I would like to: ${v.purpose}`];
+  if (v.hub) lines.push(`Hub of interest: ${v.hub}`);
+  if (v.org) lines.push(`Organisation: ${v.org}`);
+  lines.push(`Name: ${v.name}`, `Phone: ${v.phone}`);
+  if (v.area) lines.push(`Area: ${v.area}`);
+  lines.push('', v.message, '', '(Sent from the Lusaka Community Hub website)');
+  return lines.join('\n');
+}
+function wireForm(form){
+  const ok = document.getElementById(form.id + '-ok');
+  const msg = $('textarea', form), count = $('[data-count]', form);
+  const syncCount = () => { count.textContent = `${msg.value.length} / 600`; };
+  msg.addEventListener('input', syncCount);
+  // Show organisation field only for partnerships
+  const orgField = $('[data-field="org"]', form);
+  const syncOrg = () => { if (orgField){ const p = (new FormData(form)).get('purpose'); orgField.hidden = p !== orgField.dataset.showWhen; if (orgField.hidden) setErr(form,'org'); } };
+  form.addEventListener('change', e => { if (e.target.name === 'purpose') syncOrg(); if (form.dataset.tried) validate(form, false); });
+  form.addEventListener('input', () => { if (form.dataset.tried) validate(form, false); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.dataset.tried = '1';
+    const v = validate(form, true);
+    if (!v) return;
+    const text = buildMessage(form, v);
+    $('[data-preview]', ok).textContent = text;
+    $('[data-wa]', ok).href = waLink(form.dataset.to, text);
+    ok.dataset.text = text;
+    form.hidden = true; ok.hidden = false; ok.focus();
+  });
+  $('[data-copy]', ok).addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(ok.dataset.text); toast('Message copied'); }
+    catch { const r = document.createRange(); r.selectNodeContents($('[data-preview]', ok)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('Press Ctrl+C or long-press to copy the selected text'); }
+  });
+  $('[data-edit]', ok).addEventListener('click', () => { ok.hidden = true; form.hidden = false; $('textarea', form).focus(); });
+  syncCount(); syncOrg();
+}
+
+/* ================= Chrome: nav, drawer, flyer ================= */
+function buildChrome(){
+  $('#mega').innerHTML = HUBS.map(h => `<a role="menuitem" href="#${h.id}"><span class="dot" style="background:${h.color}"></span><span><b>${esc(h.name)}</b><small>${esc(h.slogan)}</small></span></a>`).join('');
+  $('#drawerLinks').innerHTML = `
+    <a href="#home" data-nav="home">Home</a>
+    <div class="group">Our Hubs</div>
+    ${HUBS.map(h => `<a href="#${h.id}" data-nav="${h.id}"><span class="dot" style="background:${h.color}"></span>${esc(h.name)}</a>`).join('')}
+    <div class="group">Take part</div>
+    <a href="#get-involved" data-nav="get-involved">Get Involved</a>
+    <a href="#contact" data-nav="contact">Contact Us</a>
+    <a class="btn btn-gold" style="justify-content:center;margin-top:14px" href="${waLink(SECRETARIAT.phone)}" target="_blank" rel="noopener">${svg('wa',2)} WhatsApp the Secretariat</a>`;
+  $('#footHubs').innerHTML = HUBS.map(h => `<li><a href="#${h.id}">${esc(h.name)}</a></li>`).join('');
+  $('#yr').textContent = new Date().getFullYear();
+
+  const hubsBtn = $('#hubsBtn'), mega = $('#mega');
+  const closeMega = () => { mega.classList.remove('open'); hubsBtn.setAttribute('aria-expanded','false'); };
+  hubsBtn.addEventListener('click', e => { e.stopPropagation(); const o = !mega.classList.contains('open'); mega.classList.toggle('open', o); hubsBtn.setAttribute('aria-expanded', String(o)); if (o) $('a', mega).focus(); });
+  document.addEventListener('click', e => { if (!mega.contains(e.target)) closeMega(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape'){ closeMega(); closeDrawer(); } });
+  mega.addEventListener('click', e => { if (e.target.closest('a')) closeMega(); });
+
+  const drawer = $('#drawer'), toggle = $('#menuToggle');
+  const openDrawer = () => { drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; $('.drawer-panel a', drawer).focus(); };
+  window.closeDrawer = () => { if (!drawer.classList.contains('open')) return; drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; toggle.focus(); };
+  toggle.addEventListener('click', openDrawer);
+  drawer.addEventListener('click', e => { if (e.target.closest('[data-close]') || e.target.closest('a')) closeDrawer(); });
+
+  const dlg = $('#flyerDlg');
+  $('#flyerClose').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+}
+
+function openFlyer(key){
+  const h = HUBS.find(x => x.key === key); if (!h) return;
+  const dlg = $('#flyerDlg'), img = $('#flyerImg');
+  img.src = `img/flyer-${h.key}.jpg`;
+  img.alt = `${h.name} flyer: ${h.slogan} What we offer: ${h.highlights.map(x => x[0]).join(', ')}. You matter. You belong.`;
+  $('#flyerTitle').textContent = `${h.short} flyer`;
+  if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open','');
+}
+
+/* ================= Router ================= */
+const ROUTES = { 'home': viewHome, 'get-involved': viewInvolved, 'contact': viewContact };
+const TITLES = { 'home':'Lusaka Community Hub Ministry', 'get-involved':'Get Involved · Lusaka Community Hub', 'contact':'Contact Us · Lusaka Community Hub' };
+let current = null;
+function route(){
+  let id = (location.hash || '#home').slice(1);
+  if (!ROUTES[id] && !HUB_BY_ID[id]){
+    // allow in-page anchors such as #main or section ids on the current view
+    const el = id && document.getElementById(id);
+    if (el && current){ el.scrollIntoView(); return; }
+    id = 'home';
+  }
+  if (id === current) return;
+  current = id;
+  const hub = HUB_BY_ID[id];
+  const main = $('#main');
+  main.innerHTML = `<div class="view">${hub ? viewHub(hub) : ROUTES[id]()}</div>`;
+  document.title = hub ? `${hub.name} · Lusaka Community Hub` : TITLES[id];
+  $$('[data-nav]').forEach(a => { if (a.dataset.nav === id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  $('#hubsBtn').classList.toggle('is-active', !!hub);
+  $$('form.card-form', main).forEach(wireForm);
+  window.scrollTo(0, 0);
+  const h1 = $('h1', main); if (h1){ h1.setAttribute('tabindex','-1'); h1.focus({ preventScroll:true }); }
+}
+
+/* In-page scroll links (data-scroll) and flyer buttons, delegated */
+document.addEventListener('click', e => {
+  const s = e.target.closest('[data-scroll]');
+  if (s){
+    const target = s.dataset.scroll, href = s.getAttribute('href') || '';
+    const dest = href.startsWith('#') ? href.slice(1) : current;
+    if (dest !== current){ e.preventDefault(); location.hash = dest; setTimeout(() => { const el = document.getElementById(target); el && el.scrollIntoView({ behavior:'smooth' }); }, 60); return; }
+    e.preventDefault();
+    const el = document.getElementById(target); el && el.scrollIntoView({ behavior:'smooth' });
+    return;
+  }
+  const f = e.target.closest('[data-flyer]');
+  if (f) openFlyer(f.dataset.flyer);
+});
+$('#skip').addEventListener('click', e => { e.preventDefault(); const m = $('#main'); m.focus(); m.scrollIntoView(); });
+
+buildChrome();
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
